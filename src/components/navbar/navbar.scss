@@ -6,6 +6,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    position: fixed;
+    z-index: 5;
+    box-shadow: 0rem .5rem 1rem rgba(0, 0, 0, 0.075);
 
     figure {
         height: 80px;
@@ -13,12 +17,18 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        text-align: center;
+        line-height: 1;
 
         .logo {
             font-weight: 600;
             text-decoration: none;
             color: $textcolor;
             font-size: 1.5rem;
+        }
+
+        i {
+            color: $primary;
         }
     }
 
@@ -52,6 +62,7 @@
         align-items: center;
         width: 100%;
         justify-content: center;
+        max-height: 200px;
 
         .navbar__list-down {
             display: flex;
@@ -60,13 +71,33 @@
             justify-content: space-between;
             width: $max-width;
             color: $textcolor;
-            padding: .5em 0;
+            padding: 1rem 0rem;
 
             i{
                 color: $primary;
                 margin-right: .25em;
                 font-size: 1.2rem;
             }
+        }
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .navbar__list-up {
+
+        .navbar__list-item-up, .cta {
+            display: none;
+        }
+    }
+
+    .navbar__list-down {
+        padding: .5rem 2rem !important;
+        font-size: 80%;
+        width: 50%;
+
+        .navbar__list-item-down:nth-child(2), :nth-child(4) {
+            display: none;
+            font-size: 1rem;
         }
     }
 }

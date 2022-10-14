@@ -1,0 +1,86 @@
+@import "../../index.scss";
+
+.subs {
+    background-color: $tertiary;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+
+    .subs__wrapper {
+        max-width: $max-width;
+        display: flex;
+        width: 100%;
+        gap: 3rem;
+
+        .subs__left {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            width: 40%;
+            height: 100%;
+            z-index: 1;
+
+            .subs__title {
+                font-size: 1.5rem;
+                font-weight: 600;
+                color: $textcolor;
+            }
+
+            .subs__text {
+                color: $textcolor;
+            }
+        }
+
+        .subs__right {
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 60%;
+            height: 100%;
+
+            .subs__sliders {
+                width: 100%;
+                height: 80%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                .subs__slider {
+                    background-color: $white;
+                    width: 400px;
+                    height: 100%;
+                    padding: 1rem;
+                    border-radius: .5rem;
+
+                    &:nth-child(2){
+                        border: .25rem solid $textcolor;
+                    }
+                }
+            }
+        }
+        .subs__cube {
+            width: 400px;
+            height: 800px;
+            background-color: $secondaryLight;
+            position: absolute;
+            z-index: 0;
+            left: 0;
+            bottom: 0rem;
+            transform: rotate(135deg);
+        }
+
+        .subs__cube2 {
+            width: 400px;
+            height: 800px;
+            background-color: $secondaryLight;
+            position: absolute;
+            z-index: 0;
+            right: 0;
+            top: 0rem;
+            transform: rotate(135deg);
+        }
+    }
+}

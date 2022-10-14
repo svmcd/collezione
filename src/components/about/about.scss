@@ -1,0 +1,100 @@
+@import "../../index.scss";
+
+.about {
+    background-color: $tertiary;
+    min-height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+
+    .about__wrapper {
+        padding: 5rem 0;
+        max-width: $max-width;
+        height: 100%;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        gap: 1rem;
+
+        .about__left {
+            width: 50%;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            z-index: 1;
+            
+            .about__title {
+                color: $textcolor;
+                font-size: 3rem;
+                font-weight: 600;
+                margin-bottom: 1rem;
+            }
+
+            .about__text {
+                color: $textcolor;
+                font-weight: 400;
+            }
+
+            .cta {
+                margin-top: 2rem;
+                width: 50%;
+            }
+        }
+
+        .about__right {
+            width: 50%;
+            z-index: 1;
+
+            img {
+                width: 100%;
+            }
+        }
+
+        .about__cube {
+            width: 400px;
+            height: 500px;
+            background-color: $secondaryLight;
+            position: absolute;
+            z-index: 0;
+            left: -10rem;
+            top: 10rem;
+            transform: rotate(135deg);
+        }
+
+        .about__cube2 {
+            width: 400px;
+            height: 500px;
+            background-color: $secondaryLight;
+            position: absolute;
+            z-index: 0;
+            right: -10rem;
+            bottom: 2rem;
+            transform: rotate(135deg);
+        }
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .about__wrapper {
+        flex-direction: column;
+        width: 90vw;
+
+        .about__left {
+            width: 90% !important;
+            height: auto !important;
+            text-align: center;
+
+            .cta {
+                width: 100% !important;
+            }
+        }
+
+        .about__right {
+            width: 90% !important;
+        }
+    }
+
+}

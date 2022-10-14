@@ -1,0 +1,113 @@
+@import "../../index.scss";
+
+.hero {
+    background-color: $secondary;
+    min-height: 90vh;
+    display: flex;
+    justify-content: center;
+    padding-top: 20vh;
+    position: relative;
+    overflow: hidden;
+
+    .hero__wrapper {
+        display: flex;
+        max-width: $max-width;
+        gap: 1rem;
+        align-items: center;
+
+        .hero__left {
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            flex-direction: column;
+            width: 35%;
+            height: 500px;
+            z-index: 1;
+    
+            .hero__title {
+                color: $textcolor;
+                font-size: 4rem;
+                font-weight: 600;
+                margin-bottom: 1rem;
+            }
+    
+            .hero__text {
+                color: $textcolor;
+                font-weight: 500;
+            }
+
+            .cta {
+                margin-top: 2rem;
+            }
+        }
+    
+        .hero__right {
+            width: 65%;
+            position: relative;
+            z-index: 1;
+    
+            img {
+                object-fit: contain;
+                position: absolute;
+                width: 64vw;
+                left: 0;
+                top: 50%;
+                transform: translate(0,-50%);
+            }
+        }
+
+        .hero__cube {
+            width: 400px;
+            height: 500px;
+            background-color: $tertiaryLight;
+            position: absolute;
+            z-index: 0;
+            left: 0;
+            bottom: -6rem;
+            transform: rotate(45deg);
+        }
+
+        .hero__cube2 {
+            width: 400px;
+            height: 500px;
+            background-color: $tertiaryLight;
+            position: absolute;
+            z-index: 0;
+            right: 0;
+            top: -6rem;
+            transform: rotate(45deg);
+        }
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .hero {
+        padding-top: 10rem;
+        padding-bottom: 5rem;
+
+        .hero__wrapper {
+            flex-direction: column-reverse;
+            width: 90vw;
+
+            .hero__left {
+                width: 100%;
+                height: auto;
+            }
+    
+            .hero__right {
+                width: 100%;
+                position: relative;
+                z-index: 1;
+
+                img {
+                    object-fit: contain;
+                    position: relative;
+                    width: 100%;
+                    left: 0;
+                    top: 0;
+                    transform: translate(0,0);
+                }
+            }
+        }
+    }
+}
