@@ -1,0 +1,63 @@
+@import "../../index.scss";
+
+.footer {
+    background-color: $white;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+
+    .footer__wrapper {
+        max-width: $max-width;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        padding: 5rem 0;
+
+        .footer__column {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            font-weight: 400;
+            
+
+            .footer__link {
+                cursor: pointer;
+
+                &:hover {
+                    color: $primary;
+                }
+
+                &:nth-child(1) {
+                    color: $textcolor;
+                    text-transform: uppercase;
+                    font-size: 75%;
+                    cursor: default;
+
+                    &:hover {
+                        color: $textcolor;
+                    }
+                }
+            }
+
+            select {
+                border: solid $grey 1px;
+                font-size: 100%;
+                font-weight: 400;
+                background-color: $white;
+            }
+        }
+    }
+
+}
+
+@media only screen and (max-width: 1200px) {
+    .footer__wrapper {
+        flex-direction: column;
+        justify-content: center;
+        width: 90% !important;
+        height: 100%;
+        gap: 5rem;
+    }
+
+}

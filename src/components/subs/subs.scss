@@ -43,20 +43,81 @@
 
             .subs__sliders {
                 width: 100%;
-                height: 80%;
+                height: 75%;
                 display: flex;
                 justify-content: center;
+                max-height: 550px;
                 align-items: center;
+                padding-bottom: 1.5rem !important; 
+                padding-top: 6rem;    
 
                 .subs__slider {
                     background-color: $white;
                     width: 400px;
-                    height: 100%;
                     padding: 1rem;
                     border-radius: .5rem;
+                    box-shadow: 0rem .5rem 1rem rgba(0, 0, 0, 0.075);
 
                     &:nth-child(2){
                         border: .25rem solid $textcolor;
+                        
+                        &::before {
+                            content: "Meest gekozen";
+                            position: absolute;
+                            font-size: 75%;
+                            top: -1.8rem;
+                            background-color: $textcolor;
+                            width: 100%;
+                            padding: 0 .26rem;
+                            color: white;
+                            border-top-left-radius: 1rem;
+                            border-top-right-radius: 1rem; 
+                            left: -.26rem;
+                            right: 0;
+                            height: 2rem;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                        }
+                    }
+
+                    .subs__top {
+                        height: 25%;
+                        display: flex;
+                        flex-direction: column;
+                        gap: .75rem;
+
+                        .top__title {
+                            font-weight: 600;
+                        }
+                    }
+
+                    .subs__bottom {
+                        height: 75%;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-evenly;
+                        gap: 1rem;
+
+                        .bottom__price {
+                            font-weight: 600;
+                            color: $textcolor;
+                        }
+
+                        .bottom__features {
+
+                            .bottom__feature {
+                                list-style: none;
+
+                                i {
+                                    margin-right: .5rem;
+                                }
+                            }
+                        }
+
+                        .cta {
+                            width: 100%;
+                        }
                     }
                 }
             }
@@ -67,8 +128,8 @@
             background-color: $secondaryLight;
             position: absolute;
             z-index: 0;
-            left: 0;
-            bottom: 0rem;
+            left: -10rem;
+            bottom: -10rem;
             transform: rotate(135deg);
         }
 
@@ -83,4 +144,37 @@
             transform: rotate(135deg);
         }
     }
+}
+
+@media only screen and (max-width: 1200px) {
+    .subs__wrapper {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 90% !important;
+        height: 100%;
+        gap: 0 !important;
+
+        .subs__left {
+            width: 100% !important;
+            text-align: center;
+            height: 30% !important;
+        }
+
+        .subs__right {
+            width: 100% !important;
+            height: 70% !important;
+
+            .subs__sliders {
+                height: 100% !important;
+                padding-top: 2rem !important;
+                max-width: 600px;
+
+                .subs__slider {
+                    height: 100%;
+                }
+            }
+        }
+    }
+
 }

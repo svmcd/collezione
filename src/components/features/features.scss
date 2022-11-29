@@ -45,7 +45,7 @@
             gap: 1rem;
 
             .features__card {
-                background-color: $tertiary;
+                background-color: $white;
                 width: 400px;
                 min-height: 250px;
                 display: flex;
@@ -53,7 +53,7 @@
                 align-items: center;
                 justify-content: space-evenly;
                 padding: 1rem;
-                border-radius: .25rem;
+                border-radius: .5rem;
                 box-shadow: 0rem .5rem 1rem rgba(0, 0, 0, 0.075);
     
                 .features__icon {
@@ -99,4 +99,23 @@
             transform: rotate(45deg);
         }
     }
+}
+
+@media only screen and (max-width: 1200px) {
+    .features_wrapper {
+        flex-direction: column;
+        width: 90% !important;
+    }
+
+    .features__heading-text {
+        width: 90% !important;
+    }
+
+    .features__cards-container {
+        flex-direction: column !important;
+        justify-content: center !important;
+        gap: 2rem !important;
+        align-items: center;
+    }
+
 }

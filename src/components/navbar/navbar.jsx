@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from "react";
+import {Link} from "react-router-dom";
+
 import "./navbar.scss";
+// eslint-disable-next-line 
+import { Link as ScrollLink, animateScroll as scroll } from "react-scroll";
 
 const Navbar = () =>{
     const [navColor, setnavColor] = useState();
@@ -7,7 +11,7 @@ const Navbar = () =>{
     const [short, setShort] = useState();
 
     const listenScrollEvent = () => {
-      window.scrollY > 10 ? setnavColor("#ffeae6") : setnavColor();
+      window.scrollY > 10 ? setnavColor("#FFFFFF") : setnavColor();
       window.scrollY > 10 ? setHide("0") : setHide();
       window.scrollY > 10 ? setShort("0") : setShort();
     };
@@ -19,25 +23,46 @@ const Navbar = () =>{
         };
     },);
 
+    const click = () => {
+        console.log("cloicked")
+    }
+
     return(
         <nav style={{
             backgroundColor: navColor,
             transition: "all .5s"
         }} 
         className="navbar" id="navbar">
-            <section className="navbar__section-up">
+            <div className="navbar__section-up">
                 <ul className="navbar__list-up">
                     <figure>
-                        <a className="logo" href="#navbar"><i class="fa-solid fa-gamepad"></i>collezione</a>
+                        <a className="logo" href="/"><i class="fa-solid fa-gamepad"></i>collezione</a>
                     </figure>
-                    <li className="navbar__list-item-up"><a href="#navbar">Over</a></li>
-                    <li className="navbar__list-item-up"><a href="#navbar">Features</a></li>
-                    <li className="navbar__list-item-up"><a href="#navbar">Prijs</a></li>
-                    <li className="navbar__list-item-up"><a href="#navbar">Contact</a></li>
-                    <li><a className="cta" href="#navbar">Login</a></li>
+                    <li className="navbar__list-item-up">
+                        <ScrollLink activeClass="active" to="about" spy={true} smooth={true} offset={-80} duration={1000}>
+                            Over
+                        </ScrollLink>
+                    </li>
+                    <li className="navbar__list-item-up">
+                        <ScrollLink activeClass="active" to="features" spy={true} smooth={true} offset={-80} duration={1000}>
+                            Features
+                        </ScrollLink>
+                    </li>
+                    <li className="navbar__list-item-up">
+                        <ScrollLink activeClass="active" to="subs" spy={true} smooth={true} offset={-80} duration={1000}>
+                            Prijs
+                        </ScrollLink>
+                    </li>
+                    <li className="navbar__list-item-up">
+                        <ScrollLink activeClass="active" to="contact" spy={true} smooth={true} offset={-80} duration={1000}>
+                            Contact
+                        </ScrollLink>
+                    </li>
+                    <li><Link className="cta" to="/Login">Login</Link></li>
                 </ul>
-            </section>
-            <section style={{
+                <i onClick={click} class="fa-solid fa-bars navbar__hamburger"></i>
+            </div>
+            <div style={{
                 maxHeight: short,
                 transition: "all .5s"
             }}  
@@ -54,7 +79,7 @@ const Navbar = () =>{
                     <li className="navbar__list-item-down"><i class="fa-solid fa-check"></i>Altijd opzegbaar</li>
                     <li className="navbar__list-item-down"><i class="fa-solid fa-check"></i>Probeer gratis</li>
                 </ul>
-            </section>
+            </div>
         </nav>
     );
 }

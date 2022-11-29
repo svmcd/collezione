@@ -1,19 +1,24 @@
 import './App.scss';
-import Navbar from "./components/navbar/navbar"
-import Hero from "./components/hero/hero"
-import About from "./components/about/about"
-import Features from "./components/features/features"
-import Subs from "./components/subs/subs"
+
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from "react-router-dom";
+
+import Home from "./components/home/home"
+import Login from "./components/login/login"
+import Dashboard from "./components/dashboard/dashboard"
 
 function App() {
   return (
-    <>
-      <Navbar />
-      <Hero />
-      <About />
-      <Features />
-      <Subs />
-    </>
+    <Router>
+      <Routes>
+          <Route exact path='/' element={<Home/>}/>
+          <Route exact path='/Login' element={<Login/>}/>
+          <Route exact path='/Dashboard' element={<Dashboard/>}/>
+      </Routes>
+    </Router>
   );
 }
 
