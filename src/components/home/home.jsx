@@ -1,3 +1,5 @@
+import React, { useLayoutEffect } from 'react';
+
 import Navbar from "../navbar/navbar"
 import Hero from "../hero/hero"
 import About from "../about/about"
@@ -7,6 +9,11 @@ import Contact from "../contact/contact"
 import Footer from "../footer/footer"
 
 const Home = () => {
+
+    useLayoutEffect(() => {
+        window.scrollTo(0, 0)
+    });
+    
     return(
         <>
             <Navbar />

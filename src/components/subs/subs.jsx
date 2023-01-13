@@ -21,8 +21,8 @@ const Subs = () => {
                     modules={[Pagination,Autoplay]}
                     autoplay={{ delay: 2500}}
                     breakpoints={{
-                        // when window width is >= 1200px
-                        1200: {
+                        // when window width is >= 1000px
+                        700: {
                           slidesPerView: 2,
                         },
                       }}
@@ -42,7 +42,7 @@ const Subs = () => {
                                 <button className="cta">button</button>
                             </div>
                         </SwiperSlide>
-                        <SwiperSlide className="subs__slider" >
+                        <SwiperSlide className="subs__slider">
                             <div className="subs__top">
                                 <h1 className="top__title">Standaard</h1>
                                 <p className="top__text">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
@@ -50,9 +50,9 @@ const Subs = () => {
                             <div className="subs__bottom">
                                 <p className="bottom__price">€12.99 per 30 dagen</p>
                                 <ul className="bottom__features">
-                                    <li className="bottom__feature"><i class="fa-regular fa-check"></i>feature</li>
-                                    <li className="bottom__feature"><i class="fa-regular fa-check"></i>feature</li>
-                                    <li className="bottom__feature"><i class="fa-regular fa-check"></i>feature</li>
+                                    <li className="bottom__feature"><i className="fa-regular fa-check"></i>feature</li>
+                                    <li className="bottom__feature"><i className="fa-regular fa-check"></i>feature</li>
+                                    <li className="bottom__feature"><i className="fa-regular fa-check"></i>feature</li>
                                 </ul>
                                 <button className="cta">button</button>
                             </div>
@@ -65,9 +65,9 @@ const Subs = () => {
                             <div className="subs__bottom">
                                 <p className="bottom__price">€12.99 per 30 dagen</p>
                                 <ul className="bottom__features">
-                                    <li className="bottom__feature"><i class="fa-regular fa-check"></i>feature</li>
-                                    <li className="bottom__feature"><i class="fa-regular fa-check"></i>feature</li>
-                                    <li className="bottom__feature"><i class="fa-regular fa-check"></i>feature</li>
+                                    <li className="bottom__feature"><i className="fa-regular fa-check"></i>feature</li>
+                                    <li className="bottom__feature"><i className="fa-regular fa-check"></i>feature</li>
+                                    <li className="bottom__feature"><i className="fa-regular fa-check"></i>feature</li>
                                 </ul>
                                 <button className="cta">button</button>
                             </div>

@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
+import { Link as ScrollLink } from "react-scroll";
 
 import "./navbar.scss";
-// eslint-disable-next-line 
-import { Link as ScrollLink, animateScroll as scroll } from "react-scroll";
+
 
 const Navbar = () =>{
     const [navColor, setnavColor] = useState();
     const [hide, setHide] = useState();
     const [short, setShort] = useState();
+    const [NavSize, netNavSize] = useState(false)
+    const [navClass, setNavClass] = useState("navbar__list-up")
+    const [navButton, setNavButton] = useState("fa-solid fa-bars navbar__hamburger")
+    /* const [LoggedIn, setLoggedIn] = useState(false); */
 
     const listenScrollEvent = () => {
       window.scrollY > 10 ? setnavColor("#FFFFFF") : setnavColor();
@@ -16,16 +20,31 @@ const Navbar = () =>{
       window.scrollY > 10 ? setShort("0") : setShort();
     };
 
+
+    if(window.location.pathname.href === "/"){
+        console.log("a")
+    }
+    else {
+
+    }
+
     useEffect(() => {
         window.addEventListener("scroll", listenScrollEvent);
         return () => {
             window.removeEventListener("scroll", listenScrollEvent);
         };
-    },);
+    });
 
-    const click = () => {
-        console.log("cloicked")
-    }
+    useEffect(() => {
+        if(NavSize === true){
+            setNavClass("navbar__list-up");
+            setNavButton("fa-sharp fa-solid fa-xmark navbar__hamburger");
+        }
+        else{
+            setNavClass("hide slideOut");
+            setNavButton("fa-solid fa-bars navbar__hamburger");
+        }
+    }, [NavSize]);
 
     return(
         <nav style={{
@@ -34,10 +53,10 @@ const Navbar = () =>{
         }} 
         className="navbar" id="navbar">
             <div className="navbar__section-up">
-                <ul className="navbar__list-up">
-                    <figure>
-                        <a className="logo" href="/"><i class="fa-solid fa-gamepad"></i>collezione</a>
-                    </figure>
+                <figure>
+                    <a className="logo" href="/collezione"><i className="fa-solid fa-gamepad"></i>collezione</a>
+                </figure>
+                <ul className={navClass}>
                     <li className="navbar__list-item-up">
                         <ScrollLink activeClass="active" to="about" spy={true} smooth={true} offset={-80} duration={1000}>
                             Over
@@ -60,7 +79,7 @@ const Navbar = () =>{
                     </li>
                     <li><Link className="cta" to="/Login">Login</Link></li>
                 </ul>
-                <i onClick={click} class="fa-solid fa-bars navbar__hamburger"></i>
+                <i onClick={() => {netNavSize(!NavSize);}} className={navButton}></i>
             </div>
             <div style={{
                 maxHeight: short,
@@ -73,11 +92,11 @@ const Navbar = () =>{
                     transition: "all .3s"
                 }}   
                 className="navbar__list-down">
-                    <li className="navbar__list-item-down"><i class="fa-solid fa-check"></i>Je games op 1 plek</li>
-                    <li className="navbar__list-item-down"><i class="fa-solid fa-check"></i>Blijf georganiseerd</li>
-                    <li className="navbar__list-item-down"><i class="fa-solid fa-check"></i>Ontdek nieuwe games</li>
-                    <li className="navbar__list-item-down"><i class="fa-solid fa-check"></i>Altijd opzegbaar</li>
-                    <li className="navbar__list-item-down"><i class="fa-solid fa-check"></i>Probeer gratis</li>
+                    <li className="navbar__list-item-down"><i className="fa-solid fa-check"></i>Je games op 1 plek</li>
+                    <li className="navbar__list-item-down"><i className="fa-solid fa-check"></i>Blijf georganiseerd</li>
+                    <li className="navbar__list-item-down"><i className="fa-solid fa-check"></i>Ontdek nieuwe games</li>
+                    <li className="navbar__list-item-down"><i className="fa-solid fa-check"></i>Altijd opzegbaar</li>
+                    <li className="navbar__list-item-down"><i className="fa-solid fa-check"></i>Probeer gratis</li>
                 </ul>
             </div>
         </nav>

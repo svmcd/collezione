@@ -40,6 +40,7 @@ h1 {
   color: white;
   font-weight: 500;
   font-size: 1rem;
+  text-align: center;
 
   &:hover {
     background-color: hsl(15, 90%, 48%);
@@ -77,4 +78,8 @@ h1 {
 
 ::selection {
   background: hsl(15, 90%, 68%);
+}
+
+@media only screen and (max-width: 1200px) {
+  
 }

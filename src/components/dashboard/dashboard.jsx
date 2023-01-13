@@ -1,61 +1,85 @@
-import "./dashboard.scss"
+import React, { useEffect, useState } from 'react';
+import { Link } from "react-router-dom";
 
-import React from "react";
+import "./dashboard.scss"
 
 import Navbar from "../navbar/navbar"
 import Footer from "../footer/footer"
 
-class Dashboard extends React.Component {
+const Dashboard = ({games, setGames}) => {
 
-    constructor(props){
-        super(props);
-        this.state= [];
-    }
+    const [featuredGame, setFeaturedGame] = useState([]);
 
-    render(){
-        return(
-            <>
-                <Navbar/>
-                <section class="dashboard">
-                    <div className="dashboard__wrapper">
-                        <div className="dashboard__filters">
-                            <input type="range"/>
-                            <select name="" id=""></select>
+    useEffect(() => {
+        setGames(games)
+        window.scrollTo(0, 0)
+        setFeaturedGame(0);
+        // eslint-disable-next-line
+    }, []);
+    
+    const onCardClicked = (e) => {
+
+        const clickedItem = parseInt(e.currentTarget.id)
+        setFeaturedGame(clickedItem)
+    }  
+    
+    let gamesSearch = games.map(gameObject => {
+        if(gameObject.added === "true"){
+            return <div onClick={onCardClicked} id={gameObject.id} key={gameObject.id} className="dashboard__item"><img src={gameObject.img} alt=""/></div>
+        }
+        return null;
+    });
+
+    let findFeaturedGame = games.map(gameObject => {
+        if(featuredGame === gameObject.id){
+
+            return  (<div className="dashboard__featured" key={gameObject.id}>
+                        <div className="featured__image-container">
+                            <figure>
+                                <img src={gameObject.img} alt="" />
+                                <div className="dashboard__rating">{gameObject.rating}</div>
+                            </figure>
                         </div>
-                        <div className="dashboard__container">
-                            <div className="dashboard__featured">
-                                <div className="featured__image-container">
-                                    <img src="/images/minecraft.jpg" alt=""/>
-                                </div>
-                                <div className="dashboard__details">
-                                    <h1 className="details__title">Minecraft</h1>
-                                    <p className="details__date">Uitgebracht: 18 november 2011</p>
-                                    <p className="details__genre">Sandbox</p>
-                                    <p className="details__desc">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Labore magni molestiae accusamus sit nesciunt repellendus accusantium hic unde doloremque? Dicta voluptatem totam aspernatur mollitia laudantium nesciunt. Laborum iusto cumque vitae.</p>
-                                    <button className="cta">Bewerk</button>
-                                </div>
-                            </div>
-                            <div className="dashboard__items">
-                                <h1 className="items__title">Jouw collectie</h1>
-                                <div className="items__container">
-                                    <div className="dashboard__item"><img src="images/minecraft.jpg" alt=""/></div>
-                                    <div className="dashboard__item"><img src="images/minecraft.jpg" alt=""/></div>
-                                    <div className="dashboard__item"><img src="images/minecraft.jpg" alt=""/></div>
-                                    <div className="dashboard__item"><img src="images/minecraft.jpg" alt=""/></div>
-                                    <div className="dashboard__item"><img src="images/minecraft.jpg" alt=""/></div>
-                                    <div className="dashboard__item"><img src="images/minecraft.jpg" alt=""/></div>
-                                    <div className="dashboard__item"><img src="images/minecraft.jpg" alt=""/></div>
-                                    <div className="dashboard__item"><img src="images/minecraft.jpg" alt=""/></div>
-                                    <div className="dashboard__item"><img src="images/minecraft.jpg" alt=""/></div>
-                                </div>
-                            </div>
+                        <div className="dashboard__details">
+                            <h1 className="details__title">{gameObject.name}</h1>
+                            <p className="details__date"><span className="details__bold">Uitgebracht:</span> {gameObject.date}</p>
+                            <p className="details__genre"><span className="details__bold">Genre:</span> {gameObject.genre}</p>
+                            <p className="details__platforms"><span className="details__bold">Platforms:</span> {gameObject.platforms}</p>
+                            <p className="details__desc">{gameObject.desc}</p>
+                            <button className="cta">Bewerk</button>
                         </div>
                     </div>
-                </section>
-                <Footer/>
-            </>
-        )
-    }
+            );
+        }
+        else{
+            return null;
+        }
+    });
+
+    return(
+        <>
+            <Navbar/>
+            <section className="dashboard">
+                <div className="dashboard__wrapper">
+                    <div className="dashboard__filters">
+                        <input type="range"/>
+                        <select name="" id=""></select>
+                    </div>
+                    <div className="dashboard__container">
+                        { findFeaturedGame }
+                        <div className="dashboard__items">
+                            <h1 className="items__title">Jouw collectie</h1>
+                            <div className="items__container">
+                                { gamesSearch }
+                            </div>
+                            <Link className="items__button cta" to="/Backlog"><i className="fa-solid fa-plus"></i> Voeg games</Link>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <Footer/>
+        </>
+    )
 
 }
 

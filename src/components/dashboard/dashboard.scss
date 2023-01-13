@@ -8,10 +8,6 @@
     overflow: hidden;
     position: relative;
 
-    * {
-/*         border: red 1px solid;
- */    }
-
     .dashboard__wrapper {
         max-width: $max-width;
         display: flex;
@@ -47,12 +43,38 @@
                     padding: 2rem .5rem;
                     border-radius: .5rem;
                     background-color: $white;
+                    min-height: 25rem;
 
-                    img {
+                    figure {
+                        position: relative;
                         width: 200px;
-                        object-fit: contain;
-                        border-radius: .5rem;
-                        box-shadow: 0rem .5rem 1rem rgba(0, 0, 0, 0.075);
+
+                        img {
+                            width: 100%;
+                            object-fit: contain;
+                            border-radius: .5rem;
+                            box-shadow: 0rem .5rem 1rem rgba(0, 0, 0, 0.075);
+                        }
+    
+                        .dashboard__rating {
+                            background-color: $primary;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            color: $white;
+                            font-size: 125%;
+                            font-weight: 500;
+                            border-radius: 100%;
+                            width: 60px;
+                            height: 60px;
+                            position: absolute;
+                            right: -15px;
+                            bottom: -15px;
+                        }
+
+                        .green {
+                            background-color: green;
+                        }
                     }
                 }
 
@@ -63,11 +85,18 @@
                     padding: 1rem;
                     border-radius: .5rem;
 
+                    .details__bold {
+                        font-weight: 500;
+                    }
+
                     .details__title {
                         color: $textcolor;
                     }
                     
                     .details__date {
+                        font-size: 75%;
+                    }
+                    .details__platforms {
                         font-size: 75%;
                     }
 
@@ -78,6 +107,11 @@
                     .details__desc {
                         margin: 1rem 0;
                         color: $textcolor;
+                        overflow-y: scroll;
+                        max-height: 15rem;
+                        background-color: $tertiaryLight;
+                        padding: .5rem;
+                        border-radius: .5rem;
                     }
                 }
 
@@ -93,6 +127,8 @@
                 gap: 1rem;
                 background-color: $white;
                 border-radius: .5rem;
+                align-self: flex-start;
+                justify-content: center;
 
                 .items__title {
                     color: $textcolor;
@@ -106,9 +142,13 @@
                     width: 100%;
                     display: flex;
                     flex-wrap: wrap;
-                    justify-content: center;
+                    justify-content: flex-start;
+                    align-items: flex-start;
                     gap: 1rem;
                     padding: 1rem;
+                    justify-content: center;
+                    max-height: 30rem;
+                    overflow-y: scroll;
 
                     .dashboard__item {
                         height: 250px;
@@ -121,28 +161,34 @@
                         display: flex;
                         justify-content: center;
                         align-items: center;
+                        overflow: hidden;
+                        filter: opacity(50%);
 
                         &:hover {
                             background-color: $tertiaryLight;
                             transition: .5s all;
+                            filter: opacity(100%);
                         }
     
                         img {
                             height: 100%;
-                            width: auto;
-                            object-fit: contain;
+                            width: 85%;
+                            object-fit: cover;
                             border-radius: .5rem;
                             box-shadow: 0rem .5rem 1rem rgba(0, 0, 0, 0.075);
-                            filter: opacity(50%);
                             pointer-events: auto;
     
                             &:hover{
                                 transform: scale(1.1);
                                 transition: .5s all;
-                                filter: opacity(100%);
                             }
                         }
                     }
+                }
+
+                .items__button {
+                    width: 50%;
+                    margin-bottom: 2rem;
                 }
             }
         }
@@ -177,7 +223,8 @@
                 .items__container {
 
                     .dashboard__item {
-                        width: 175px !important;
+                        width: 150px !important;
+                        height: 200px !important;
                         padding: .75rem !important;
                     }
                 }
