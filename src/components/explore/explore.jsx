@@ -1,12 +1,12 @@
-import "./backlog.scss"
+import "./explore.scss"
 
-import React, { useLayoutEffect, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
 
 import Navbar from "../navbar/navbar"
 import Footer from "../footer/footer"
 import gamesFromData from "../../data/games";
 
-const Backlog = ({addGameToCollection, loggedIn, setLoggedIn}) => {
+const Explore = ({addGameToCollection, loggedIn, setLoggedIn}) => {
 
     const [games, setGames] = useState([]);
 
@@ -15,18 +15,12 @@ const Backlog = ({addGameToCollection, loggedIn, setLoggedIn}) => {
         setLoggedIn(true);
     });
 
-    const filterGamesByGenre = (nameToBeSearched, toBeSearchedArray) => {
-        // eslint-disable-next-line
+    const filterGamesByTitle = (nameToBeSearched, toBeSearchedArray) => {
         return toBeSearchedArray.filter(game => {
-            let found = false;
-            game.genre.forEach(genre => {
-                if(genre.toUpperCase().indexOf(nameToBeSearched.toUpperCase()) !== -1){
-                    found = true;
-                }
-            });
-            if(found === true){
+            if(game.name.toUpperCase().indexOf(nameToBeSearched.toUpperCase()) !== -1){
                 return game;
             }
+            return null;
         });
     }
     
@@ -47,20 +41,24 @@ const Backlog = ({addGameToCollection, loggedIn, setLoggedIn}) => {
 
     const [inputs, setInputs] = useState([
         {
-            id: "genre",
+            id: "title",
             value: "",
-            label: "Genre",
-            filter: filterGamesByGenre,
-            placeholder: "Actie..",
+            label: "Titel",
+            filter: filterGamesByTitle,
+            placeholder: "Fortnite..",
         },
         {
             id: "platform",
             value: "",
             label: "Platform",
             filter: filterGamesByPlatform,
-            placeholder: "Playstation 4..",
+            placeholder: "PS4..",
         },
     ]);
+
+    useEffect(() => {
+        setGames(gamesFromData);
+    },[]);
 
     const onInputChange = (e) => {
         let copy = [...inputs];
@@ -71,44 +69,36 @@ const Backlog = ({addGameToCollection, loggedIn, setLoggedIn}) => {
             return input
         });
         setInputs(copy)
-    }
 
-    const submit = () => {
-        let result = gamesFromData;
+        let result = gamesFromData
         inputs.forEach( input => {
-            result = input.filter(input.value, result);
+            result = input.filter(input.value, result)
             setGames(result)
         });
     }
 
     const inputsToBeRendered = inputs.map(input => {
-        return  <div key={input.id} className="backlog__inputContainer">
-                    <label htmlFor={input.id} className="backlog__label">{input.label}</label>
-                    <input onChange={onInputChange} id={input.id} type="text" className="backlog__input" value={input.value} placeholder={input.placeholder}/>
+        return  <div key={input.id} className="explore__inputContainer">
+                    <label htmlFor={input.id} className="explore__label">{input.label}</label>
+                    <input onChange={onInputChange} id={input.id} type="text" className="explore__input" value={input.value} placeholder={input.placeholder}/>
                  </div>
     })
 
-    let counter = 0;
     let gamesToBeRendered = games.map(gameObject => {
-        if(counter < 1){
-            counter++;
-            console.log(counter)
-            return <div className="backlog__item" onClick={addGameToCollection} key={gameObject.id} id={gameObject.id}><img src={gameObject.img} alt="game"/></div>
-        }
+        return <div className="explore__item" onClick={addGameToCollection} key={gameObject.id} id={gameObject.id}><img src={gameObject.img} alt="game"/></div>
     })
 
     return(
         <>
             <Navbar loggedIn={loggedIn}/>
-            <section className="backlog">
-                <div className="backlog__wrapper">
-                    <form  onSubmit={(event) => event.preventDefault()} className="backlog__filters">
+            <section className="explore">
+                <div className="explore__wrapper">
+                    <form  onSubmit={(event) => event.preventDefault()} className="explore__filters">
                         {inputsToBeRendered}
-                        <button className="cta" onClick={submit}>Zoek</button>
                     </form>
-                    <div className="backlog__resultsContainer">
-                        <h1 className="backlog__resultsTitle">Resultaten:</h1>
-                        <div className="backlog__results">
+                    <div className="explore__resultsContainer">
+                        <h1 className="explore__resultsTitle">Resultaten:</h1>
+                        <div className="explore__results">
                             {gamesToBeRendered}
                         </div>
                     </div>
@@ -119,4 +109,4 @@ const Backlog = ({addGameToCollection, loggedIn, setLoggedIn}) => {
     )
 }
 
-export default Backlog;
+export default Explore;

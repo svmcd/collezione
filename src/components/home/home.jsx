@@ -8,15 +8,16 @@ import Subs from "../subs/subs"
 import Contact from "../contact/contact"
 import Footer from "../footer/footer"
 
-const Home = () => {
+const Home = ({loggedIn, setLoggedIn}) => {
 
     useLayoutEffect(() => {
         window.scrollTo(0, 0)
+        setLoggedIn(false);
     });
     
     return(
         <>
-            <Navbar />
+            <Navbar loggedIn={loggedIn}/>
             <Hero />
             <About />
             <Features />

@@ -6,10 +6,11 @@ import React, { useLayoutEffect } from 'react';
 import Navbar from "../navbar/navbar"
 import Footer from "../footer/footer"
 
-const Login = () => {
+const Login = ({loggedIn, setLoggedIn}) => {
 
     useLayoutEffect(() => {
         window.scrollTo(0, 0)
+        setLoggedIn(false)
     });
 
     const navigate = useNavigate();
@@ -24,7 +25,7 @@ const Login = () => {
 
     return (
         <>
-            <Navbar />
+            <Navbar loggedIn={loggedIn}/>
             <section className="login">
                 <form onSubmit={handleSubmit} className="login__wrapper">
                     <div className="login__left">

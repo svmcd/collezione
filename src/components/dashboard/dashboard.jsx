@@ -1,18 +1,23 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 
 import "./dashboard.scss"
 
 import Navbar from "../navbar/navbar"
+
 import Footer from "../footer/footer"
 
-const Dashboard = ({games, setGames}) => {
+const Dashboard = ({games, setGames, loggedIn, setLoggedIn}) => {
 
     const [featuredGame, setFeaturedGame] = useState([]);
 
+    useLayoutEffect(() => {
+        window.scrollTo(0, 0)
+        setLoggedIn(true);
+    });
+
     useEffect(() => {
         setGames(games)
-        window.scrollTo(0, 0)
         setFeaturedGame(0);
         // eslint-disable-next-line
     }, []);
@@ -24,7 +29,7 @@ const Dashboard = ({games, setGames}) => {
     }  
     
     let gamesSearch = games.map(gameObject => {
-        if(gameObject.added === "true"){
+        if(gameObject.added === true){
             return <div onClick={onCardClicked} id={gameObject.id} key={gameObject.id} className="dashboard__item"><img src={gameObject.img} alt=""/></div>
         }
         return null;
@@ -58,7 +63,7 @@ const Dashboard = ({games, setGames}) => {
 
     return(
         <>
-            <Navbar/>
+            <Navbar loggedIn={loggedIn}/>
             <section className="dashboard">
                 <div className="dashboard__wrapper">
                     <div className="dashboard__filters">

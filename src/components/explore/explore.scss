@@ -1,6 +1,6 @@
 @import "../../index.scss";
 
-.backlog {
+.explore {
     background-color: $tertiaryLight;
     min-height: 100vh !important;
     display: flex;
@@ -8,7 +8,7 @@
     overflow: hidden;
     position: relative;
 
-    .backlog__wrapper {
+    .explore__wrapper {
         width: $max-width;
         display: flex;
         flex-direction: column;
@@ -16,22 +16,22 @@
         gap: 1rem;
         align-items: flex-start;
 
-        .backlog__filters {
+        .explore__filters {
             display: flex;
-            align-items: flex-end;
+            align-items: center;
             gap: 2.5rem;
             flex-wrap: wrap;
 
-            .backlog__inputContainer {
+            .explore__inputContainer {
                 flex-direction: column;
                 display: flex;
 
-                .backlog__label {
+                .explore__label {
                     font-size: 100%;
                     font-weight: 300;
                 }
     
-                .backlog__input {
+                .explore__input {
                     border: solid $grey 1px;
                     border-radius: .25rem;
                     font-size: 100%;
@@ -46,23 +46,19 @@
                     }
                 }
             }
-
-            .cta {
-                width: 327px;
-            }
         }
 
 
-        .backlog__resultsContainer {
+        .explore__resultsContainer {
             width: 100%;
             display: flex;
             flex-direction: column;
 
-            .backlog__resultsTitle {
+            .explore__resultsTitle {
                 font-weight: 400;
             }
 
-            .backlog__results {
+            .explore__results {
                 display: flex;
                 flex-wrap: wrap;
                 flex-direction: row !important;
@@ -72,7 +68,7 @@
                 padding: 1rem;
                 min-height: 65vh !important;
 
-                .backlog__item {
+                .explore__item {
                     height: 225px;
                     width: 175px;
                     padding: 1rem 0rem;
@@ -112,7 +108,7 @@
 }
 
 @media only screen and (max-width: 1200px) {
-    .backlog__wrapper {
+    .explore__wrapper {
         flex-direction: column;
         justify-content: center;
         align-items: center;
