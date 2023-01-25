@@ -1,5 +1,6 @@
 import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { Link } from "react-router-dom";
+import { TwitterButton, FacebookButton } from "react-social";
 
 import "./dashboard.scss"
 
@@ -95,6 +96,8 @@ const Dashboard = ({ games, setGames, loggedIn, setLoggedIn }) => {
         }
     });
 
+    let url = "https://samedpolat.nl/collezione/";
+
     return (
         <>
             <Navbar loggedIn={loggedIn} />
@@ -112,6 +115,10 @@ const Dashboard = ({ games, setGames, loggedIn, setLoggedIn }) => {
                                 {gamesSearch}
                             </div>
                             <Link className="items__button cta" to="/Explore"><i className="fa-solid fa-plus"></i> Voeg games</Link>
+                            <div className="items__share">
+                                <TwitterButton className="items__twit" url={url}><i class="fa-brands fa-square-twitter"></i>Deel op Twitter</TwitterButton>
+                                <FacebookButton className="items__face" url={url}><i class="fa-brands fa-square-facebook"></i>Deel op Facebook</FacebookButton>
+                            </div>
                         </div>
                     </div>
                 </div>
