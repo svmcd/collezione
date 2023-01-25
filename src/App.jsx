@@ -28,17 +28,13 @@ function App() {
 
   const addGameToCollection = (e) => {
     const clickedGame = parseInt(e.currentTarget.id)
-    console.log(clickedGame)
-
-    const newState = games.find((foundGame) => {
+    const newGames = games.map((foundGame) => {
       if(foundGame.id === clickedGame){
-        console.log(foundGame.id)
-        return {...foundGame, name: "a"}
+        return {...foundGame, added: true}
       }
-      return null
+      return foundGame
     })
-    console.log(newState)
-    setGames(newState)
+    setGames(newGames)
   }
 
   return (

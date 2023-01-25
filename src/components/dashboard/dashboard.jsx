@@ -7,82 +7,116 @@ import Navbar from "../navbar/navbar"
 
 import Footer from "../footer/footer"
 
-const Dashboard = ({games, setGames, loggedIn, setLoggedIn}) => {
+const Dashboard = ({ games, setGames, loggedIn, setLoggedIn }) => {
 
     const [featuredGame, setFeaturedGame] = useState([]);
+    const [editMode, setEditMode] = useState(false);
+    const [updatedDesc, setUpdatedDesc] = useState();
 
     useLayoutEffect(() => {
         window.scrollTo(0, 0)
-        setLoggedIn(true);
-    });
+    }, []);
 
     useEffect(() => {
+        setLoggedIn(true);
         setGames(games)
         setFeaturedGame(0);
-        // eslint-disable-next-line
-    }, []);
-    
+    }, [setLoggedIn, games, setGames]);
+
+
     const onCardClicked = (e) => {
 
         const clickedItem = parseInt(e.currentTarget.id)
         setFeaturedGame(clickedItem)
-    }  
-    
+    }
+
     let gamesSearch = games.map(gameObject => {
-        if(gameObject.added === true){
-            return <div onClick={onCardClicked} id={gameObject.id} key={gameObject.id} className="dashboard__item"><img src={gameObject.img} alt=""/></div>
+        if (gameObject.added === true) {
+            return <div onClick={onCardClicked} id={gameObject.id} key={gameObject.id} className="dashboard__item"><img src={gameObject.img} alt="" /></div>
         }
         return null;
     });
 
-    let findFeaturedGame = games.map(gameObject => {
-        if(featuredGame === gameObject.id){
+    const toggleEditMode = () => {
+        setEditMode(!editMode);
+    };
 
-            return  (<div className="dashboard__featured" key={gameObject.id}>
-                        <div className="featured__image-container">
-                            <figure>
-                                <img src={gameObject.img} alt="" />
-                                <div className="dashboard__rating">{gameObject.rating}</div>
-                            </figure>
-                        </div>
-                        <div className="dashboard__details">
-                            <h1 className="details__title">{gameObject.name}</h1>
-                            <p className="details__date"><span className="details__bold">Uitgebracht:</span> {gameObject.date}</p>
-                            <p className="details__genre"><span className="details__bold">Genre:</span> {gameObject.genre}</p>
-                            <p className="details__platforms"><span className="details__bold">Platforms:</span> {gameObject.platforms}</p>
-                            <p className="details__desc">{gameObject.desc}</p>
-                            <button className="cta">Bewerk</button>
-                        </div>
+    const handleDescChange = (event) => {
+        setUpdatedDesc(event.target.value);
+    };
+
+    const handleUpdateClick = (gameObject) => {
+        // Find the index of the game object in the games array
+        const gameIndex = games.findIndex((game) => game.id === gameObject.id);
+
+        // Create a new copy of the games array
+        const updatedGames = [...games];
+
+        // Update the description of the game object
+        updatedGames[gameIndex].desc = updatedDesc;
+
+        // Update the state with the new copy of the games array
+        setGames(updatedGames);
+        setEditMode(false);
+    };
+
+    let findFeaturedGame = games.map(gameObject => {
+        if (featuredGame === gameObject.id) {
+
+            return (<div className="dashboard__featured" key={gameObject.id}>
+                <div className="featured__image-container">
+                    <figure>
+                        <img src={gameObject.img} alt="" />
+                        <div className="dashboard__rating">{gameObject.rating}</div>
+                    </figure>
+                </div>
+                <div className="dashboard__details">
+                    <h1 className="details__title">{gameObject.name}</h1>
+                    <p className="details__date"><span className="details__bold">Uitgebracht:</span> {gameObject.date}</p>
+                    <p className="details__genre"><span className="details__bold">Genre:</span> {gameObject.genre}</p>
+                    <p className="details__platforms"><span className="details__bold">Platforms:</span> {gameObject.platforms}</p>
+                    {editMode ? (
+                        <textarea
+                            className="details__desc"
+                            value={updatedDesc}
+                            onChange={handleDescChange}
+                        />
+                    ) : ( <p className="details__desc">{gameObject.desc}</p> )}
+                    <div className="details__buttons">
+                        <button className="cta" onClick={toggleEditMode}> {editMode ? 'Terug' : 'Bewerk'} </button>
+                        {editMode && ( <button className="cta" onClick={() => handleUpdateClick(gameObject)}>Opslaan</button> )}
                     </div>
+                </div>
+            </div>
             );
         }
-        else{
+        else {
             return null;
         }
     });
 
-    return(
+    return (
         <>
-            <Navbar loggedIn={loggedIn}/>
+            <Navbar loggedIn={loggedIn} />
             <section className="dashboard">
                 <div className="dashboard__wrapper">
-                    <div className="dashboard__filters">
-                        <input type="range"/>
+{/*                     <div className="dashboard__filters">
+                        <input type="range" />
                         <select name="" id=""></select>
-                    </div>
+                    </div> */}
                     <div className="dashboard__container">
-                        { findFeaturedGame }
+                        {findFeaturedGame}
                         <div className="dashboard__items">
                             <h1 className="items__title">Jouw collectie</h1>
                             <div className="items__container">
-                                { gamesSearch }
+                                {gamesSearch}
                             </div>
-                            <Link className="items__button cta" to="/Backlog"><i className="fa-solid fa-plus"></i> Voeg games</Link>
+                            <Link className="items__button cta" to="/Explore"><i className="fa-solid fa-plus"></i> Voeg games</Link>
                         </div>
                     </div>
                 </div>
             </section>
-            <Footer/>
+            <Footer />
         </>
     )
 

@@ -3,9 +3,9 @@ const games = [
         id: 0,
         name: "Minecraft",
         date: "10 november, 2011",
-        genre: ["Avontuur, simulator"],
-        platforms: ["Linux", "Mac", "PC (Microsoft Windows)"],
-        desc: "Minecraft richt zich erop de speler in staat te stellen een dynamisch gegenereerde kaart van blokken van een kubieke meter te verkennen, ermee te werken en deze aan te passen. Naast blokken bevat de omgeving planten, mobs en items. Enkele activiteiten in het spel zijn onder meer mijnbouw voor erts, het bestrijden van vijandige mobs en het maken van nieuwe blokken en gereedschappen door verschillende bronnen te verzamelen die in het spel te vinden zijn. Dankzij het open model van de game kunnen spelers structuren, creaties en illustraties maken op verschillende multiplayer-servers of hun kaarten voor één speler. Andere functies zijn onder meer redstone-circuits voor logische berekeningen en acties op afstand, mijnkarren en sporen, en een mysterieuze onderwereld genaamd de Nether. Een aangewezen maar volledig optioneel doel van het spel is om naar een dimensie genaamd End te reizen en de enderdraak te verslaan",
+        genre: ["Sandbox, survival"],
+        platforms: ["PlayStation 4, Xbox One, PC (Microsoft Windows), Nintendo Switch, iOS, Android"],
+        desc: "Minecraft is een sandbox-survivalgame waarin de speler een open wereld kan verkennen, grondstoffen verzamelen, gebouwen bouwen en monsters verslaan. De game biedt verschillende speelmodi zoals Survival, waarbij de speler zich moet beschermen tegen monsters en zorgen dat hij genoeg voedsel heeft, en Creative, waarbij de speler onbeperkt grondstoffen heeft en zich volledig kan richten op het bouwen. Minecraft staat bekend om zijn eenvoud, maar toch diepe gameplay en de mogelijkheid om creatief te zijn.",
         img: "https://images.igdb.com/igdb/image/upload/t_cover_big/co49x5.png",
         rating: 82,
         added: true
@@ -130,7 +130,95 @@ const games = [
         img: "https://upload.wikimedia.org/wikipedia/en/4/44/Red_Dead_Redemption_II.jpg",
         rating: 97,
         added: true
-    }
+    },
+    {
+        id: 12,
+        name: "The Witcher 3: Wild Hunt",
+        date: "19 mei, 2015",
+        genre: ["Actie-RPG, open wereld"],
+        platforms: ["PlayStation 4, Xbox One, PC (Microsoft Windows)"],
+        desc: "The Witcher 3: Wild Hunt is een open wereld-actie-RPG die zich afspeelt in een fantasie-wereld vol met monsters en magie. De speler neemt de rol aan van Geralt van Rivia, een monsterjager met bovennatuurlijke krachten. Tijdens het spelen van de game moet je keuzes maken die het verloop van het verhaal beïnvloeden. De game biedt een uitgebreide open wereld waar je kunt jagen, vechten, verkennen en missies kunt voltooien. The Witcher 3: Wild Hunt staat bekend om zijn indrukwekkende verhaal, complexe personages en vele uren aan gameplay.",
+        img: "https://image.api.playstation.com/vulcan/ap/rnd/202211/0711/qezXTVn1ExqBjVjR5Ipm97IK.png",
+        rating: 92,
+        added: false
+    },
+    {
+        id: 13,
+        name: "Overwatch",
+        date: "24 mei, 2016",
+        genre: ["first-person shooter, multiplayer"],
+        platforms: ["PlayStation 4, Xbox One, PC (Microsoft Windows)"],
+        desc: "Overwatch is een eerste persoon shooter multiplayer game ontwikkeld door Blizzard Entertainment. De game biedt een scala aan helden die ieder hun eigen unieke vaardigheden en rol in het team hebben. Het doel van de game is om samen met je team te werken om de vijand te verslaan of bepaalde doelen te behalen. De game biedt diverse speelmodi zoals capture the point, control en payload. Overwatch staat bekend om zijn heldenontwerp, heldenbalans en zijn competitieve gameplay. ",
+        img: "https://m.media-amazon.com/images/M/MV5BYjBkNTJkOWUtNTg1ZS00NGZhLWIxMGUtOWE0ZDA0NzRkODM3XkEyXkFqcGdeQXVyMTA0MTM5NjI2._V1_.jpg",
+        rating: 88,
+        added: false
+    },
+    {
+        id: 14,
+        name: "Portal 2",
+        date: "19 april, 2011",
+        genre: ["Puzzel, first-person shooter"],
+        platforms: ["PlayStation 3, Xbox 360, PC (Microsoft Windows)"],
+        desc: "Portal 2 is een eerste persoon puzzle-spel ontwikkeld door Valve Corporation. Spelers nemen de rol aan van Chell, een proefpersoon in een futuristische wetenschappelijke faciliteit. De speler moet gebruik maken van een portal gun om de vele uitdagende puzzels op te lossen. De game biedt een verhaalgedreven singleplayer-campagne en een co-op modus waar spelers samenwerken om puzzels op te lossen. Portal 2 staat bekend om zijn unieke gameplay, humoristische verhaal en de ontwikkeling van de personages. ",
+        img: "https://upload.wikimedia.org/wikipedia/en/f/f9/Portal2cover.jpg",
+        rating: 96,
+        added: false
+    },
+    {
+        id: 15,
+        name: "The Walking Dead: The Telltale Definitive Series",
+        date: "10 september, 2019",
+        genre: ["Avontuur, graphic adventure, episodisch"],
+        platforms: ["PlayStation 4, Xbox One, PC (Microsoft Windows)"],
+        desc: "The Walking Dead: The Telltale Definitive Series is een verzameling van alle afleveringen van de episodische graphic adventure game ontwikkeld door Telltale Games. De game is gebaseerd op de gelijknamige comic-reeks en televisieserie. In de game speel je als Lee Everett, een gevangene die in het begin van de zombie outbreak ontsnapt. Tijdens het spelen van de game moet je keuzes maken die invloed hebben op het verloop van het verhaal en de relaties met andere personages. The Walking Dead: The Telltale Definitive Series staat bekend om zijn emotionele verhaal, interessante personages en de impact van de keuzes die de speler maakt. ",
+        img: "https://cdn.cdkeys.com/700x700/media/catalog/product/n/e/new_project_14_.jpg",
+        rating: 90,
+        added: false
+    },
+    {
+        id: 16,
+        name: "Tekken 7",
+        date: "2 juni, 2017",
+        genre: ["Vechten"],
+        platforms: ["PlayStation 4, Xbox One, PC (Microsoft Windows)"],
+        desc: "Tekken 7 is een fighting game ontwikkeld en uitgegeven door Bandai Namco Entertainment. Het is deel 7 in de Tekken-serie. Het speelt zich af na de gebeurtenissen van Tekken 6 en richt zich op het einde van de rechtstreekse conflicten tussen de Mishima-clan. De game biedt een groot aantal personages om uit te kiezen, elk met hun eigen unieke moveset en stijl. De game biedt ook een verhaalmodus, waarin de speler de achtergronden van de personages kan ontdekken en een gevechtstournooimodus. Tekken 7 staat bekend om zijn technische gameplay en de diepte van zijn personages. ",
+        img: "https://image.api.playstation.com/cdn/EP0700/CUSA06014_00/60LMXmTtlbr3RwGglLc9awmBpcFRCC5S.png",
+        rating: 85,
+        added: false
+    },
+    {
+        id: 18,
+        name: "South Park: The Fractured but Whole",
+        date: "17 oktober, 2017",
+        genre: ["RPG"],
+        platforms: ["PlayStation 4, Xbox One, PC (Microsoft Windows)"],
+        desc: "South Park: The Fractured but Whole is een role-playing videospel ontwikkeld en uitgegeven door Ubisoft. Het is gebaseerd op de animatieserie South Park en is de opvolger van het spel South Park: The Stick of Truth uit 2014.",
+        img: "https://cdn-products.eneba.com/resized-products/3GLXi0sTVt1_b0eG-Q4XR_6wOVGHu-lIKKSka3COPNY_350x200_2x-0.jpeg",
+        rating: 85,
+        added: false
+    },
+    {
+        id: 19,
+        name: "God of War",
+        date: "20 april, 2018",
+        genre: ["Actie-avontuur"],
+        platforms: ["PlayStation 4"],
+        desc: "God of War is een actie-avontuur videospel ontwikkeld en uitgegeven door Santa Monica Studio. Het speelt zich af in de wereld van de Griekse mythologie en volgt de avonturen van de oorspronkelijke God of War, Kratos. Het spel biedt een combinatie van hack-and-slash gameplay, puzzels en een verhaalmodus.",
+        img: "https://upload.wikimedia.org/wikipedia/en/a/a7/God_of_War_4_cover.jpg",
+        rating: 90,
+        added: false
+    },
+    {
+        id: 20,
+        name: "God of War Ragnarok",
+        date: "13 maart, 2007",
+        genre: ["Actie-avontuur"],
+        platforms: ["PlayStation 2"],
+        desc: "God of War II is een actie-avontuur videospel ontwikkeld en uitgegeven door Santa Monica Studio. Het is het tweede deel in de God of War-serie en speelt zich af in de wereld van de Griekse mythologie. Het verhaal volgt de avonturen van de oorspronkelijke God of War, Kratos, die zijn wraak op de Olympische goden wil nemen.",
+        img: "https://image.api.playstation.com/vulcan/ap/rnd/202207/1210/EUg935xYj1xnRS8jkKAapzCp.png",
+        rating: 88,
+        added: false
+    },
 ]
 
 export default games;

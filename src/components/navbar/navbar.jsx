@@ -32,14 +32,14 @@ const Navbar = ({loggedIn}) =>{
             setNavClass("hide slideOut");
             setNavButton("fa-solid fa-bars navbar__hamburger");
         }
-    }, [navSize]);
+    }, [navSize]);   
 
     if(loggedIn === true){
         return(
             <nav style={{ backgroundColor: "white" }} className="navbar" id="navbar">
                 <div className="navbar__section-up">
                     <figure>
-                        <a className="logo" href="/collezione"><i className="fa-solid fa-gamepad"></i>collezione</a>
+                        <p className="logo"><i className="fa-solid fa-gamepad"></i>collezione</p>
                     </figure>
                     <ul className={navClass}>
                         <li className="navbar__list-item-up">

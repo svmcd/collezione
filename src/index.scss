@@ -28,7 +28,7 @@ body {
 }
 
 h1 {
-  font-weight: 600 !important;
+  font-weight: 500 !important;
 }
 
 .cta {
@@ -78,6 +78,17 @@ h1 {
 
 ::selection {
   background: hsl(15, 90%, 68%);
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: translateY(10px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0px);
+  }
 }
 
 @media only screen and (max-width: 1200px) {

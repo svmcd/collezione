@@ -14,95 +14,147 @@
         flex-direction: column;
         padding-top: 6rem;
         gap: 1rem;
-        align-items: flex-start;
 
-        .backlog__filters {
+        .backlog__top {
+            width: 100%;
             display: flex;
-            align-items: flex-end;
-            gap: 2.5rem;
-            flex-wrap: wrap;
-
-            .backlog__inputContainer {
-                flex-direction: column;
-                display: flex;
-
-                .backlog__label {
-                    font-size: 100%;
-                    font-weight: 300;
-                }
-    
-                .backlog__input {
-                    border: solid $grey 1px;
-                    border-radius: .25rem;
-                    font-size: 100%;
-                    padding: .25rem;
-                    font-weight: 300;
-                    background-color: $white;
-                    font-style: italic;
-    
-                    &:focus {
-                        outline: none;
-                        border: 1px solid $textcolor;
-                    }
-                }
-            }
-
-            .cta {
-                width: 327px;
+            justify-content: flex-start;
+            
+            .backlog__title {
+                color: $textcolor;
             }
         }
 
-
-        .backlog__resultsContainer {
-            width: 100%;
+        .backlog__bottom {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
+            align-items: flex-start;
+            width: 100%;
 
-            .backlog__resultsTitle {
-                font-weight: 400;
-            }
-
-            .backlog__results {
+            .backlog__filters {
                 display: flex;
+                align-items: flex-end;
+                gap: 2.5rem;
                 flex-wrap: wrap;
-                flex-direction: row !important;
-                gap: 1rem;
-                justify-content: center;
-                background-color: $white;
-                padding: 1rem;
-                min-height: 65vh !important;
+                width: 30%;
 
-                .backlog__item {
-                    height: 225px;
-                    width: 175px;
-                    padding: 1rem 0rem;
-                    background-color: $grey;
-                    cursor: pointer;
-                    border-radius: .5rem;
-                    pointer-events: none;
+    
+                .backlog__inputContainer {
+                    flex-direction: column;
                     display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    overflow: hidden;
-                    filter: opacity(50%);
+    
+                    .backlog__label {
+                        font-size: 100%;
+                        font-weight: 300;
+                    }
+        
+                    .backlog__input {
+                        border: solid $grey 1px;
+                        border-radius: .25rem;
+                        font-size: 100%;
+                        padding: .25rem;
+                        font-weight: 300;
+                        background-color: $white;
+                        font-style: italic;
+        
+                        &:focus {
+                            outline: none;
+                            border: 1px solid $textcolor;
+                        }
+                    }
+                }
+    
+                .cta {
+                    width: 327px;
+                }
+            }
+    
+    
+            .backlog__resultsContainer {
+                display: flex;
+                flex-direction: column;
+                width: 70%;
+    
+                .backlog__results {
+                    display: flex;
+                    flex-wrap: wrap;
+                    flex-direction: row !important;
+                    gap: 1rem;
+                    justify-content: flex-start;
+                    background-color: $white;
+                    height: 100%;
+                    padding: 1rem;
+                    min-height: 20rem;
 
-                    &:hover {
-                        background-color: $tertiaryLight;
-                        transition: .5s all;
-                        filter: opacity(100%);
+                    .backlog__notfound {
+                        display: flex;
+                        width: 100%;
+                        justify-content: center;
+                        align-items: center;
+                        color: $textcolor;
                     }
 
-                    img {
-                        height: 100%;
-                        width: 85%;
-                        object-fit: cover;
+                    .backlog__item {
+                        width: 100%;
+                        padding: 1rem 0rem;
+                        cursor: pointer;
                         border-radius: .5rem;
-                        box-shadow: 0rem .5rem 1rem rgba(0, 0, 0, 0.075);
-                        pointer-events: auto;
+                        display: flex;
+                        justify-content: flex-start;
+                        align-items: center;
+                        overflow: hidden;
+                        gap: 1rem;
+                        animation: fadeIn .5s ease-in;
+    
+                        img {
+                            height: 350px;
+                            width: 250px;
+                            object-fit: cover;
+                            border-radius: .5rem;
+                            box-shadow: 0rem .5rem 1rem rgba(0, 0, 0, 0.075);
+                            pointer-events: auto;
+                        }
+    
+                        .backlog__item--details {
+                            display: flex;
+                            flex-direction: column;
+                            border-radius: .5rem;
+                            height: 350px;
+                            justify-content: space-between;
+                            gap: 1rem;
+        
+                            .details__bold {
+                                font-weight: 500;
+                            }
+        
+                            .details__title {
+                                color: $textcolor;
+                            }
+                            
+                            .details__date {
+                                font-size: 75%;
+                            }
+                            .details__platforms {
+                                font-size: 75%;
+                            }
+        
+                            .details__genre {
+                                font-size: 75%;
+                            }
+    
+                            .details__desc {
+                                color: $textcolor;
+                                overflow-y: scroll;
+                                max-height: 10rem;
+                                min-height: 10rem;
+                                background-color: $tertiaryLight;
+                                padding: .5rem;
+                                border-radius: .5rem;
+                            }
 
-                        &:hover{
-                            transform: scale(1.1);
-                            transition: .5s all;
+                            .cta {
+                                width: 15rem;
+                            }
                         }
                     }
                 }
@@ -119,5 +171,28 @@
         width: 90% !important;
         height: 100%;
         gap: 1rem;
+        padding-bottom: 6rem;
+
+        .backlog__bottom {
+            flex-direction: column !important;
+            gap: 1rem;
+
+            .backlog__filters {
+                gap: 1rem !important;
+                width: 100% !important;
+                flex-direction: column;
+                align-items: flex-start !important;
+            }
+
+            .backlog__resultsContainer {
+                width: 100% !important; 
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .backlog__item {
+        flex-direction: column;
     }
 }

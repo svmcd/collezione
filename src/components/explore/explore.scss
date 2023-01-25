@@ -15,6 +15,90 @@
         padding-top: 6rem;
         gap: 1rem;
         align-items: flex-start;
+        padding-bottom: 6rem;
+        position: relative;
+
+        .explore__opened {
+            position: fixed;
+            width: 100%;
+            padding: 1rem;
+            border-radius: .5rem;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            overflow: hidden;
+            gap: 1rem;
+            animation: fadeIn .5s ease-in;
+            z-index: 5;
+            background-color: $white;
+            width: 75%;
+            top: 25%;
+            left: 0; 
+            right: 0; 
+            margin-left: auto; 
+            margin-right: auto; 
+            box-shadow: 0rem .25rem 1rem rgba(0, 0, 0, 0.05);
+
+            .explore__close {
+                cursor: pointer;
+                color: $textcolor;
+                position: absolute;
+                font-size: 2rem;
+                top: 1.15rem;
+                right: 1rem;
+            }
+    
+            img {
+                height: 350px;
+                width: 250px;
+                object-fit: cover;
+                border-radius: .5rem;
+                box-shadow: 0rem .5rem 1rem rgba(0, 0, 0, 0.075);
+                pointer-events: auto;
+            }
+    
+            .explore__opened--details {
+                display: flex;
+                flex-direction: column;
+                border-radius: .5rem;
+                height: 350px;
+                justify-content: space-between;
+                gap: 1rem;
+    
+                .details__bold {
+                    font-weight: 500;
+                }
+    
+                .details__title {
+                    color: $textcolor;
+                }
+                
+                .details__date {
+                    font-size: 75%;
+                }
+                .details__platforms {
+                    font-size: 75%;
+                }
+    
+                .details__genre {
+                    font-size: 75%;
+                }
+    
+                .details__desc {
+                    color: $textcolor;
+                    overflow-y: scroll;
+                    max-height: 10rem;
+                    min-height: 10rem;
+                    background-color: $tertiaryLight;
+                    padding: .5rem;
+                    border-radius: .5rem;
+                }
+
+                .cta {
+                    width: 15rem;
+                }
+            }
+        }
 
         .explore__filters {
             display: flex;
@@ -55,7 +139,8 @@
             flex-direction: column;
 
             .explore__resultsTitle {
-                font-weight: 400;
+                font-weight: 300;
+                color: $textcolor;
             }
 
             .explore__results {
@@ -68,38 +153,59 @@
                 padding: 1rem;
                 min-height: 65vh !important;
 
-                .explore__item {
-                    height: 225px;
-                    width: 175px;
-                    padding: 1rem 0rem;
-                    background-color: $grey;
-                    cursor: pointer;
-                    border-radius: .5rem;
-                    pointer-events: none;
+                .explore__item--wrapper {
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    overflow: hidden;
-                    filter: opacity(50%);
+                    flex-direction: column;
+                    padding: .5rem 0rem;
+                    border-radius: .5rem;
+                    background-color: $grey;
+                    gap: .25rem;
+                    animation: fadeIn .5s ease-in;
+                    height: min-content;
 
-                    &:hover {
-                        background-color: $tertiaryLight;
-                        transition: .5s all;
-                        filter: opacity(100%);
+                    .explore__image {
+                        height: 225px;
+                        width: 175px;
+                        cursor: pointer;
+                        border-radius: .5rem;
+                        pointer-events: none;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        overflow: hidden;
+                        filter: opacity(50%);
+    
+                        &:hover {
+                            background-color: $tertiaryLight;
+                            transition: .5s all;
+                            filter: opacity(100%);
+                        }
+    
+                        img {
+                            height: 100%;
+                            width: 85%;
+                            object-fit: cover;
+                            border-radius: .5rem;
+                            box-shadow: 0rem .5rem 1rem rgba(0, 0, 0, 0.075);
+                            pointer-events: auto;
+    
+                            &:hover{
+                                transition: .5s all;
+                            }
+                        }
                     }
 
-                    img {
-                        height: 100%;
-                        width: 85%;
-                        object-fit: cover;
-                        border-radius: .5rem;
-                        box-shadow: 0rem .5rem 1rem rgba(0, 0, 0, 0.075);
-                        pointer-events: auto;
-
-                        &:hover{
-                            transform: scale(1.1);
-                            transition: .5s all;
-                        }
+                    .explore__item--title {
+                        padding: 0 .75rem;
+                        align-self: flex-start;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        max-width: 175px;
+                        text-overflow: ellipsis;
+                        font-weight: 300;
                     }
                 }
             }
@@ -115,5 +221,21 @@
         width: 90% !important;
         height: 100%;
         gap: 1rem;
+
+        .explore__opened {
+            top: 10% !important;
+            width: 80% !important;
+        }
+
+        img {
+            height: 20rem !important;
+            width: 15rem !important;
+        }
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .explore__opened {
+        flex-direction: column;
     }
 }
