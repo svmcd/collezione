@@ -1,0 +1,98 @@
+@import "../../index.scss";
+
+.contact {
+    background-color: $secondary;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+
+    .contact__wrapper {
+        max-width: $max-width;
+        width: 100%;
+        padding-top: 6rem;
+
+        .contact__form-container {
+            height: 100%;
+            z-index: 1;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+
+            label {
+                font-size: 100%;
+                font-weight: 300;
+            }
+
+            input, textarea {
+                border: solid $grey 1px;
+                border-radius: .25rem;
+                font-size: 100%;
+                padding: .25rem;
+                font-weight: 300;
+                background-color: $white;
+
+                &:focus {
+                    outline: none;
+                    border: 1px solid $textcolor;
+                }
+            }
+
+            .contact__title {
+                font-size: 1.5rem;
+                font-weight: 600;
+                color: $textcolor;
+            }
+
+            .form__input-container {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                max-width: 50rem;
+            }
+
+            .cta {
+                width: 200px;
+            }
+        }
+
+        .contact__cube {
+            width: 400px;
+            height: 800px;
+            background-color: $tertiaryLight;
+            position: absolute;
+            z-index: 0;
+            left: -10rem;
+            bottom: -10rem;
+            transform: rotate(135deg);
+        }
+
+        .contact__cube2 {
+            width: 400px;
+            height: 800px;
+            background-color: $tertiaryLight;
+            position: absolute;
+            z-index: 0;
+            right: 0;
+            top: 0rem;
+            transform: rotate(135deg);
+        }
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .contact__wrapper {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 90% !important;
+    }
+
+    .contact__cube, .contact__cube2 {
+        display: none;
+    }
+
+}

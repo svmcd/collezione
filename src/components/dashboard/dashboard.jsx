@@ -24,6 +24,76 @@ const Dashboard = ({ games, setGames, loggedIn, setLoggedIn }) => {
         setFeaturedGame(0);
     }, [setLoggedIn, games, setGames]);
 
+    const filterGamesByPlatform = (platformToBeSearched, toBeSearchedArray) => {
+        // eslint-disable-next-line
+        return toBeSearchedArray.filter(game => {
+            let found = false;
+            game.platforms.forEach(platform => {
+                if (platform.toUpperCase().indexOf(platformToBeSearched.toUpperCase()) !== -1) {
+                    found = true;
+                }
+            });
+            if (found === true) {
+                return game;
+            }
+        })
+    }
+
+    const filterGamesByGenre = (genreToBeSearched, toBeSearchedArray) => {
+        // eslint-disable-next-line
+        return toBeSearchedArray.filter(game => {
+            let found = false;
+            game.genre.forEach(genre => {
+                if (genre.toUpperCase().indexOf(genreToBeSearched.toUpperCase()) !== -1) {
+                    found = true;
+                }
+            });
+            if (found === true) {
+                return game;
+            }
+        })
+    }
+    
+    const [inputs, setInputs] = useState([
+        {
+            id: "platform",
+            value: "",
+            label: "Platform",
+            filter: filterGamesByPlatform,
+            placeholder: "PC..",
+        },
+        {
+            id: "genre",
+            value: "",
+            label: "Genre",
+            filter: filterGamesByGenre,
+            placeholder: "Avontuur..",
+        },
+    ]);
+
+    const onInputChange = (e) => {
+        let copy = [...inputs];
+        copy.map(input => {
+            if (input.id === e.target.id) {
+                input.value = e.target.value;
+            }
+            return input
+        });
+        setInputs(copy)
+
+        let result = games
+        inputs.forEach(input => {
+            result = input.filter(input.value, result)
+            setGames(result)
+        });
+    }
+
+    const inputsToBeRendered = inputs.map(input => {
+        return <div key={input.id} className="dashboard__inputContainer">
+            <label htmlFor={input.id} className="dashboard__label">{input.label} </label>
+            <input onChange={onInputChange} id={input.id} type="text" className="dashboard__input" value={input.value} placeholder={input.placeholder} />
+        </div>
+    })
 
     const onCardClicked = (e) => {
 
@@ -64,31 +134,32 @@ const Dashboard = ({ games, setGames, loggedIn, setLoggedIn }) => {
     let findFeaturedGame = games.map(gameObject => {
         if (featuredGame === gameObject.id) {
 
-            return (<div className="dashboard__featured" key={gameObject.id}>
-                <div className="featured__image-container">
-                    <figure>
-                        <img src={gameObject.img} alt="" />
-                        <div className="dashboard__rating">{gameObject.rating}</div>
-                    </figure>
-                </div>
-                <div className="dashboard__details">
-                    <h1 className="details__title">{gameObject.name}</h1>
-                    <p className="details__date"><span className="details__bold">Uitgebracht:</span> {gameObject.date}</p>
-                    <p className="details__genre"><span className="details__bold">Genre:</span> {gameObject.genre}</p>
-                    <p className="details__platforms"><span className="details__bold">Platforms:</span> {gameObject.platforms}</p>
-                    {editMode ? (
-                        <textarea
-                            className="details__desc"
-                            value={updatedDesc}
-                            onChange={handleDescChange}
-                        />
-                    ) : ( <p className="details__desc">{gameObject.desc}</p> )}
-                    <div className="details__buttons">
-                        <button className="cta" onClick={toggleEditMode}> {editMode ? 'Terug' : 'Bewerk'} </button>
-                        {editMode && ( <button className="cta" onClick={() => handleUpdateClick(gameObject)}>Opslaan</button> )}
+            return (
+                <>
+                    <div className="featured__image-container" key={gameObject.id}>
+                        <figure>
+                            <img src={gameObject.img} alt="" />
+                            <div className="dashboard__rating">{gameObject.rating}</div>
+                        </figure>
                     </div>
-                </div>
-            </div>
+                    <div className="dashboard__details">
+                        <h1 className="details__title">{gameObject.name}</h1>
+                        <p className="details__date"><span className="details__bold">Uitgebracht:</span> {gameObject.date}</p>
+                        <p className="details__genre"><span className="details__bold">Genre:</span> {gameObject.genre}</p>
+                        <p className="details__platforms"><span className="details__bold">Platforms:</span> {gameObject.platforms}</p>
+                        {editMode ? (
+                            <textarea
+                                className="details__desc"
+                                value={updatedDesc}
+                                onChange={handleDescChange}
+                            />
+                        ) : (<p className="details__desc">{gameObject.desc}</p>)}
+                        <div className="details__buttons">
+                            <button className="cta" onClick={toggleEditMode}> {editMode ? 'Terug' : 'Bewerk'} </button>
+                            {editMode && (<button className="cta" onClick={() => handleUpdateClick(gameObject)}>Opslaan</button>)}
+                        </div>
+                    </div>
+                </>
             );
         }
         else {
@@ -96,19 +167,20 @@ const Dashboard = ({ games, setGames, loggedIn, setLoggedIn }) => {
         }
     });
 
-    let url = "https://samedpolat.nl/collezione/";
+    let url = "https://samedpolat.nl/collezione/#/dashboard";
 
     return (
         <>
             <Navbar loggedIn={loggedIn} />
             <section className="dashboard">
                 <div className="dashboard__wrapper">
-{/*                     <div className="dashboard__filters">
-                        <input type="range" />
-                        <select name="" id=""></select>
-                    </div> */}
+                    <div className="dashboard__filters">
+                        {inputsToBeRendered}
+                    </div>
                     <div className="dashboard__container">
-                        {findFeaturedGame}
+                        <div className="dashboard__featured">
+                            {findFeaturedGame}
+                        </div>
                         <div className="dashboard__items">
                             <h1 className="items__title">Jouw collectie</h1>
                             <div className="items__container">
@@ -126,7 +198,6 @@ const Dashboard = ({ games, setGames, loggedIn, setLoggedIn }) => {
             <Footer />
         </>
     )
-
 }
 
 export default Dashboard;

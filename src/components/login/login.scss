@@ -86,7 +86,8 @@
 @media only screen and (max-width: 1200px) {
 
     .login {
-        align-items: flex-end;
+        align-items: center;
+        padding-top: 10rem;
 
         .login__wrapper {
             flex-direction: column-reverse;

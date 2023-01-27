@@ -58,7 +58,7 @@ const Explore = ({ addGameToCollection, loggedIn, setLoggedIn }) => {
             value: "",
             label: "Platform",
             filter: filterGamesByPlatform,
-            placeholder: "PS4..",
+            placeholder: "Xbox One..",
         },
     ]);
 
@@ -92,10 +92,12 @@ const Explore = ({ addGameToCollection, loggedIn, setLoggedIn }) => {
     })
 
     let gamesToBeRendered = games.map(gameObject => {
-        return  <div className="explore__item--wrapper">
-                    <div className="explore__image" onClick={() => handleGameClick(gameObject.id)} key={gameObject.id} id={gameObject.id}><img src={gameObject.img} alt="game" /></div>
-                    <p className="explore__item--title">{gameObject.name}</p>
-                </div>
+        if(gameObject.added === false){
+            return  <div className="explore__item--wrapper">
+                        <div className="explore__image" onClick={() => handleGameClick(gameObject.id)} key={gameObject.id} id={gameObject.id}><img src={gameObject.img} alt="game" /></div>
+                        <p className="explore__item--title">{gameObject.name}</p>
+                    </div>  
+        }
     })
 
     return (

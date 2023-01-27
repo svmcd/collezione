@@ -8,7 +8,7 @@ function Hero(){
             <div className="hero__wrapper">
                 <div className="hero__left">
                     <h1 className="hero__title">Collezione</h1>
-                    <p className="hero__text">Met Collezione labore eu aute elit occaecat non.Tempor aute in officia qui do eiusmod enim. Laborum velit laborum elit sint laborum cillum enim. Duis voluptate commodo ipsum ut ipsum enim pariatur irure irure laborum excepteur commodo. Irure Lorem eu et laboris enim cillum enim eu magna. Officia do laboris mollit duis adipisicing aliquip nostrud velit elit ipsum aliquip. Eiusmod id esse mollit exercitation in tempor.</p>
+                    <p className="hero__text">Met Collezione, de game-collectie app, houd je al jouw favoriete games bij de hand en ontdek je nieuwe titels die perfect bij jou passen. Voeg games toe aan jouw persoonlijke collectie, bekijk informatie over deze titels, zoek op basis van jouw interesses en deel jouw collectie met andere game-fanaten. Collezione is de perfecte manier om jouw passie voor games te organiseren en te delen. Creëer nu jouw collectie op Collezione.</p>
                     <ScrollLink className="cta" activeClass="active" to="subs" spy={true} smooth={true} offset={-80} duration={1000}>Probeer 14 dagen gratis</ScrollLink>
                 </div>
                 <div className="hero__right">

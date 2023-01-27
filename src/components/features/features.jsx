@@ -7,23 +7,23 @@ const Features = () => {
             <div className="features__wrapper">
                 <div className="features__heading">
                     <h1 className="features__heading-title">Features</h1>
-                    <p className="features__heading-text">Magna veniam consequat ut occaecat. Incididunt laboris deserunt id deserunt veniam ut esse cupidatat ullamco. Officia enim laboris exercitation commodo occaecat magna esse deserunt ipsum amet ullamco est.</p>
+                    <p className="features__heading-text">Collezione biedt een aantal handige functies voor game-liefhebbers, waarmee je jouw favoriete games op één plek kunt verzamelen, nieuwe titels kunt ontdekken die bij jouw interesses passen en informatie kunt bekijken over elke game in jouw verzameling. Daarnaast kun je zoeken en filteren op basis van verschillende criteria, zoals genre, release-datum en populaire games.</p>
                 </div>
                 <div className="features__cards-container">
                     <FeaturesCard 
                         icon="fa-solid fa-trophy features__icon"
                         title="Al jouw games op 1 plek" 
-                        text="Occaecat consectetur Lorem sint minim dolore sit ullamco sunt ullamco. Nostrud ea proident elit esse in aute ad quis laboris tempor ad magna consequat pariatur." 
+                        text="Verzamel en bekijk jouw favoriete games op één plek." 
                     />
                     <FeaturesCard 
                         icon="fa-solid fa-bolt features__icon"
                         title="Ontdek nieuwe games" 
-                        text="Occaecat consectetur Lorem sint minim dolore sit ullamco sunt ullamco. Nostrud ea proident elit esse in aute ad quis laboris tempor ad magna consequat pariatur." 
+                        text="Ontdek nieuwe games die bij jouw interesses passen." 
                     />
                     <FeaturesCard 
                         icon="fa-solid fa-bookmark features__icon"
-                        title="Lorem ipsum" 
-                        text="Occaecat consectetur Lorem sint minim dolore sit ullamco sunt ullamco. Nostrud ea proident elit esse in aute ad quis laboris tempor ad magna consequat pariatur." 
+                        title="Bekijk je games terug" 
+                        text="Bekijk details en informatie over elke game in jouw collectie, zoals releasedatum, ontwikkelaars, genre, en meer." 
                     />
                 </div>
                 <figure className="features__cube"></figure>

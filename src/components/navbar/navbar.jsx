@@ -43,13 +43,16 @@ const Navbar = ({loggedIn}) =>{
                     </figure>
                     <ul className={navClass}>
                         <li className="navbar__list-item-up">
-                            <Link to="/Dashboard">Collectie</Link>
+                            <Link to="/Dashboard">Mijn collectie</Link>
                         </li>
                         <li className="navbar__list-item-up">
                             <Link to="/Explore">Ontdek meer</Link>
                         </li>
                         <li className="navbar__list-item-up">
                             <Link to="/Backlog">Backlog chooser</Link>
+                        </li>
+                        <li className="navbar__list-item-up">
+                            <Link to="/Contact">Contact</Link>
                         </li>
                         <li className="navbar__list-item-up">
                             <Link to="/">Log uit</Link>

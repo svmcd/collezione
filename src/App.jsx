@@ -15,6 +15,7 @@ import Login from "./components/login/login"
 import Dashboard from "./components/dashboard/dashboard"
 import Backlog from "./components/backlog/backlog"
 import Explore from "./components/explore/explore"
+import Contact from "./components/contactLoggedIn/contact"
 
 function App() {
 
@@ -44,6 +45,7 @@ function App() {
         <Route exact path='/Dashboard' element={<Dashboard games={games} setGames={setGames} loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>}/>
         <Route exact path='/Backlog' element={<Backlog games={games} setGames={setGames} addGameToCollection={addGameToCollection} loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>}/>
         <Route exact path='/Explore' element={<Explore games={games} setGames={setGames} addGameToCollection={addGameToCollection} loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>}/>
+        <Route exact path='/Contact' element={<Contact loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>}/>
     </Routes>
   );
 }
